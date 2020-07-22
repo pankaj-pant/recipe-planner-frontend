@@ -1,6 +1,7 @@
 import React from 'react';
 import Recipes from './Recipes'
 import Ingredients from './Ingredients'
+import ShoppingList from './ShoppingList'
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <h2>What do you feel like eating today?</h2>
       <Recipes />
       <Ingredients />
+      <ShoppingList />
 
     </div>
   );
