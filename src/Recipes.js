@@ -12,11 +12,15 @@ const Recipes = () => {
         setItems(updatedItems)
         
     }
+    const deleteItem = (id) => {
+        const updatedItems = items.filter(item => item.id !== id)
+        setItems(updatedItems)
+    }
     return(
         <div>
             <p>List of all Recipes</p>
             {db.recipes.map(recipe => <Recipe key={recipe.id} name={recipe.dish} ingredients={recipe.ingredients} addToList={addToList}/>)}
-            <ShoppingList items={items}/>
+            <ShoppingList items={items} deleteItem={deleteItem}/>
         </div>
     )
 }
