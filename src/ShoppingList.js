@@ -1,4 +1,5 @@
 import React from 'react';
+import Counter from './Counter'
 
 const ShoppingList = ({items, deleteItem}) => {
 
@@ -10,9 +11,15 @@ const ShoppingList = ({items, deleteItem}) => {
                     <p>Items added to list</p>
                 {items.map(item => {
                     return (
-                    <div>
-                        <p key={item.id}>{item.item} <button onClick={() => deleteItem(item.id)}>delete</button></p>
-                        
+                    <div key={item.id}>
+                        <p>
+                            {item.item} {" "}
+                            <button onClick={() => deleteItem(item.id)}>
+                                delete
+                            </button>
+                            {" "}
+                            Quantity: <Counter />
+                        </p>
                     </div>)
                 })}
             </div>)}

@@ -2,11 +2,11 @@
  "recipes" :  [
      {
         "id": 1, "dish": "Salmon Soup", 
-        "ingredients": [{"id": 1, "item": "Salmon"}, {"id": 2, "item": "Potato"}]
+        "ingredients": [{"id": 1, "item": "Salmon 250g"}, {"id": 2, "item": "Potato"}]
      },
      {
         "id": 2, "dish": "Salmon Pasta", 
-        "ingredients": [{"id": 1, "item": "Salmon"}, {"id": 3, "item": "Pasta"}]
+        "ingredients": [{"id": 3, "item": "Warm Smoked Salmon 300g"}, {"id": 4, "item": "Pasta"}]
      }
     ]
      
