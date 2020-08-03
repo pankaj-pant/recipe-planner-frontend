@@ -4,7 +4,7 @@ import Counter from './Counter'
 const ShoppingList = ({items, deleteItem}) => {
 
     return (
-        <div style={{border: "1px solid red"}}>
+        <div style={{border: "1px solid black"}}>
             <p>Shopping List</p>
             {items.length === 0 ? <p>No items in list</p> : (
                 <div>
