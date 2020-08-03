@@ -1,20 +1,22 @@
 import React from 'react';
 import Counter from './Counter'
+import {connect} from 'react-redux'
+import {deleteIngredient} from './redux/actionCreators'
 
-const ShoppingList = ({items, deleteItem}) => {
+const ShoppingList = ({ingredients, deleteIngredient}) => {
 
     return (
         <div style={{border: "1px solid black"}}>
             <p>Shopping List</p>
-            {items.length === 0 ? <p>No items in list</p> : (
+            {ingredients.length === 0 ? <p>No items in list</p> : (
                 <div>
                     <p>Items added to list</p>
-                {items.map(item => {
+                {ingredients.map(item => {
                     return (
                     <div key={item.id}>
                         <p>
                             {item.item} {" "}
-                            <button onClick={() => deleteItem(item.id)}>
+                            <button onClick={() => deleteIngredient(item.id)}>
                                 delete
                             </button>
                             {" "}
@@ -27,4 +29,12 @@ const ShoppingList = ({items, deleteItem}) => {
     )
 }
 
-export default ShoppingList
+const mapStateToProps = (state) => {
+    return {ingredients: state.Ingredients}
+}
+
+const mapDispatchToProps = {
+    deleteIngredient
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList)

@@ -23,7 +23,6 @@ const Recipes = ({dish}) => {
         <div style={{border: "1px solid pink"}}>
             <p>List of all Recipes</p>
             {dish.map(recipe => <Recipe key={recipe.id} name={recipe.dish} ingredients={recipe.ingredients} addToList={addToList}/>)}
-            <ShoppingList items={items} deleteItem={deleteItem}/>
         </div>
     )
 }

@@ -6,3 +6,17 @@ export const selectDish = (dish) => ({
         dish: dish
     }
 })
+
+export const addIngredient = (ingredients) => ({
+    type: actions.ADD_INGREDIENT,
+    payload: {
+        ingredients: ingredients
+    }
+})
+
+export const deleteIngredient = (id) => ({
+    type: actions.REMOVE_INGREDIENT,
+    payload: {
+        id: id
+    }
+})
