@@ -1,0 +1,11 @@
+.recipe {
+    max-width: 345px;
+}
+
+.media {
+    height: 140px;
+}
+
+.expandOpen {
+    transform: 'rotate(180deg)',
+  }

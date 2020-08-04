@@ -1,27 +1,23 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux'
 import {selectDish, addIngredient} from './redux/actionCreators'
+import './Recipe.css'
 
-import { makeStyles } from '@material-ui/core/styles';
+import image from './images/burgers.jpg'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Collapse from '@material-ui/core/Collapse';
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-});
 
 const Recipe = ({name, ingredients, selectDish, addIngredient}) => {
-    const classes = useStyles();
+    
     const [show, setShow] = useState(false)
     const showIngredients = () => {
         console.log(`Listing ingredients for ${name}`)
@@ -37,11 +33,12 @@ const Recipe = ({name, ingredients, selectDish, addIngredient}) => {
             {ingredients.map(ingredient => <p key={ingredient.id}>{ingredient.item}</p>)}</div>) : null}
         </div> */
 
-<Card className={classes.root}>
+<Card className='recipe'>
 <CardActionArea>
   <CardMedia
-    className={classes.media}
-    image="/static/images/cards/contemplative-reptile.jpg"
+    height="140"
+    component="img"
+    image={image}
     title="Contemplative Reptile"
   />
   <CardContent>
@@ -53,14 +50,21 @@ const Recipe = ({name, ingredients, selectDish, addIngredient}) => {
     </Typography>
   </CardContent>
 </CardActionArea>
-<CardActions>
-  <Button size="small" color="primary">
-    Share
-  </Button>
-  <Button size="small" color="primary">
-    Learn More
-  </Button>
+<CardActions >
+    <IconButton aria-label="add to favorites">
+        <FavoriteIcon />
+    </IconButton>
+
+    <IconButton onClick={showIngredients} style={{transform: show ? "rotate(180deg)" : ""}}>
+        <ExpandMoreIcon />
+    </IconButton>
 </CardActions>
+<Collapse in={show} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography paragraph>Ingredients:</Typography>
+          {ingredients.map(ingredient => <Typography key={ingredient.id}>{ingredient.item}</Typography>)}
+        </CardContent>
+      </Collapse>
 </Card>
     )
 }
