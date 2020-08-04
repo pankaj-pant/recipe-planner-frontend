@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import Recipe from './Recipe'
-import db from './Recipes.json'
-import ShoppingList from './ShoppingList'
 import {connect} from 'react-redux'
+import './Recipes.css'
 
 const Recipes = ({dish}) => {
     const [items, setItems] = useState([])
@@ -13,14 +12,10 @@ const Recipes = ({dish}) => {
         setItems(updatedItems)
         
     }
-    const deleteItem = (id) => {
-        const updatedItems = items.filter(item => item.id !== id)
-        setItems(updatedItems)
-    }
 
     console.log("State", dish)
     return(
-        <div style={{border: "1px solid pink"}}>
+        <div className="recipes">
             <p>List of all Recipes</p>
             {dish.map(recipe => <Recipe key={recipe.id} name={recipe.dish} ingredients={recipe.ingredients} addToList={addToList}/>)}
         </div>

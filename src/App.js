@@ -1,18 +1,47 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import Recipes from './Recipes'
-import Ingredients from './Ingredients'
 import ShoppingList from './ShoppingList'
 import './App.css';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 function App() {
   return (
-    <div className="App">
-      <h2>What do you feel like eating today?</h2>
-      <Recipes />
-      <ShoppingList />
-      {/* <Ingredients />  */}  
+    <Router>
+      <div className="App">
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton edge="start"  color="inherit" aria-label="menu">
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" >
+              Meal Planner
+            </Typography>
+            <Button color="inherit" href="/">Recipes</Button>
+            <Button color="inherit" href="/shoppingList">Shopping List</Button>
+          </Toolbar>
+        </AppBar>
 
-    </div>
+        <Switch>
+          <Route path="/">
+            <Recipes />
+          </Route>
+          <Route path="/shoppingList">
+            <ShoppingList />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
