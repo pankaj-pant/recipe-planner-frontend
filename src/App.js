@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import Recipes from './Recipes'
+import MealPlan from './MealPlan'
 import ShoppingList from './ShoppingList'
 import './App.css';
 import AppBar from '@material-ui/core/AppBar';
@@ -28,6 +29,7 @@ function App() {
               Meal Planner
             </Typography>
             <Button color="inherit" href="/">Recipes</Button>
+            <Button color="inherit" href="/mealPlan">Meal Plan</Button>
             <Button color="inherit" href="/shoppingList">Shopping List</Button>
           </Toolbar>
         </AppBar>
@@ -35,6 +37,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Recipes />
+          </Route>
+          <Route path="/mealPlan">
+            <MealPlan />
           </Route>
           <Route path="/shoppingList">
             <ShoppingList />

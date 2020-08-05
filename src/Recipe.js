@@ -15,45 +15,31 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 const Recipe = ({name, ingredients, selectDish, addIngredient}) => {
-    
-    const [show, setShow] = useState(false)
-    const showIngredients = () => {
-        console.log(`Listing ingredients for ${name}`)
-        setShow(!show)
-    }
-
-
+  
     return(
-/*         <div style={{border: "1px solid red"}}>
-            <p onClick={showIngredients}>{name}</p>
-            {show ? (<div><p>Ingredients:</p>
-                <button onClick={() => addIngredient(ingredients)}>Add Ingredients to Shopping List</button>
-            {ingredients.map(ingredient => <p key={ingredient.id}>{ingredient.item}</p>)}</div>) : null}
-        </div> */
-
-<Card className='recipe'>
-<CardActionArea>
-  <CardMedia
-    height="140"
-    component="img"
-    image={image}
-    title="Contemplative Reptile"
-  />
-  <CardContent>
-    <Typography gutterBottom variant="h5" component="h2">
-      {name}
-    </Typography>
-    <Typography variant="body2" color="textSecondary" component="p">
-      ...Some description about the dish
-    </Typography>
-  </CardContent>
-</CardActionArea>
-<CardActions >
-    <IconButton aria-label="add to favorites">
-        <FavoriteIcon />
-    </IconButton>
-</CardActions>
-</Card>
+      <Card className='recipe'>
+        <CardActionArea>
+          <CardMedia
+            height="140"
+            component="img"
+            image={image}
+            title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {name}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              ...Some description about the dish
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions >
+            <IconButton aria-label="add to favorites">
+                <FavoriteIcon />
+            </IconButton>
+        </CardActions>
+      </Card>
     )
 }
 

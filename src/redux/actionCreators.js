@@ -1,9 +1,9 @@
 import * as actions from './actionTypes'
 
-export const selectDish = (dish) => ({
+export const selectDish = (id) => ({
     type: actions.SELECT_DISH,
     payload: {
-        dish: dish
+        id: id
     }
 })
 
