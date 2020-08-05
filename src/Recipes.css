@@ -1,3 +1,7 @@
 .recipes {
     width: 70em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-around;
 }

@@ -15,9 +15,11 @@ const Recipes = ({dish}) => {
 
     console.log("State", dish)
     return(
-        <div className="recipes">
+        <div>
             <p>List of all Recipes</p>
-            {dish.map(recipe => <Recipe key={recipe.id} name={recipe.dish} ingredients={recipe.ingredients} addToList={addToList}/>)}
+            <div className="recipes">
+                {dish.map(recipe => <Recipe key={recipe.id} name={recipe.dish} ingredients={recipe.ingredients} addToList={addToList}/>)}
+            </div>
         </div>
     )
 }

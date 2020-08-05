@@ -33,7 +33,7 @@ function App() {
         </AppBar>
 
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Recipes />
           </Route>
           <Route path="/shoppingList">

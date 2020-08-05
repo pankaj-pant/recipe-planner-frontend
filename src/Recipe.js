@@ -12,8 +12,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Collapse from '@material-ui/core/Collapse';
 
 
 const Recipe = ({name, ingredients, selectDish, addIngredient}) => {
@@ -54,17 +52,7 @@ const Recipe = ({name, ingredients, selectDish, addIngredient}) => {
     <IconButton aria-label="add to favorites">
         <FavoriteIcon />
     </IconButton>
-
-    <IconButton onClick={showIngredients} style={{transform: show ? "rotate(180deg)" : ""}}>
-        <ExpandMoreIcon />
-    </IconButton>
 </CardActions>
-<Collapse in={show} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Ingredients:</Typography>
-          {ingredients.map(ingredient => <Typography key={ingredient.id}>{ingredient.item}</Typography>)}
-        </CardContent>
-      </Collapse>
 </Card>
     )
 }
