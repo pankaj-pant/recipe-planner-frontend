@@ -1,7 +1,21 @@
 import * as actions from './actionTypes'
 
+export const createRecipe = (dish) => ({
+    type: actions.CREATE_RECIPE,
+    payload:  {
+        dish: dish
+    }
+})
+
 export const selectDish = (id) => ({
     type: actions.SELECT_DISH,
+    payload: {
+        id: id
+    }
+})
+
+export const unselectDish = (id) => ({
+    type: actions.UNSELECT_DISH,
     payload: {
         id: id
     }

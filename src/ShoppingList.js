@@ -7,7 +7,7 @@ const ShoppingList = ({ingredients, deleteIngredient}) => {
 
     return (
         <div style={{border: "1px solid black"}}>
-            <p>Shopping List</p>
+            <h2>Shopping List</h2>
             {ingredients.length === 0 ? <p>No items in list</p> : (
                 <div>
                     <p>Items added to list</p>

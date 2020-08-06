@@ -16,7 +16,7 @@ const initialState = [{
 
 const Dish = (state = initialState, action) => {
     switch (action.type) {
-        case actions.SELECT_DISH:
+        case actions.CREATE_RECIPE:
             return [...state, action.payload.dish]
         default:
             return state
