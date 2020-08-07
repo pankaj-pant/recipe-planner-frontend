@@ -7,10 +7,10 @@ export const createRecipe = (dish) => ({
     }
 })
 
-export const selectDish = (id) => ({
+export const selectDish = (dish) => ({
     type: actions.SELECT_DISH,
     payload: {
-        id: id
+        dish: dish
     }
 })
 

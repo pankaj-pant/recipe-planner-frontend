@@ -19,7 +19,7 @@ const Recipes = ({dish}) => {
             <h2>List of all Recipes</h2>
             <button>Add New Recipe</button>
             <div className="recipes">
-                {dish.map(recipe => <Recipe key={recipe.id} name={recipe.dish} id={recipe.id} />)}
+                {dish.map(recipe => <Recipe key={recipe.id} name={recipe.dish} id={recipe.id} dish={recipe}/>)}
             </div>
             
         </div>

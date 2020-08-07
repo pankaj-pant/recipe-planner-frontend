@@ -14,7 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
-const Recipe = ({id, name, selectDish, mealPlan}) => {
+const Recipe = ({id, name, selectDish, mealPlan, dish}) => {
     return(
       <Card className='recipe'>
         <CardActionArea>
@@ -34,7 +34,7 @@ const Recipe = ({id, name, selectDish, mealPlan}) => {
           </CardContent>
         </CardActionArea>
         <CardActions >
-            <IconButton aria-label="add to favorites" onClick={() => selectDish(id)}>
+            <IconButton aria-label="add to favorites" onClick={() => selectDish(dish)}>
                 <FavoriteIcon />
             </IconButton>
         </CardActions>
