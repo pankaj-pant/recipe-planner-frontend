@@ -6,7 +6,7 @@ const MealPlan = (state = [], action) => {
             console.log("Select dish")
             return [...state, action.payload.dish]
         case actions.UNSELECT_DISH:
-            return state.filter(dish => dish !== action.payload.id)
+            return state.filter(dish => dish.id !== action.payload.id)
         default:
             return state
     }

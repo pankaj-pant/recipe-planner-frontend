@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux'
-import {selectDish} from './redux/actionCreators'
+import {selectDish, unselectDish} from './redux/actionCreators'
 import './Recipe.css'
 
 import image from './images/burgers.jpg'
@@ -15,6 +15,13 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 const Recipe = ({id, name, selectDish, mealPlan, dish}) => {
+  const [heart, setHeart] = useState(false)
+  const handleClick = () => {
+    setHeart(!heart)
+    console.log("Heart is now", heart)
+    console.log(id)
+    heart ? selectDish(dish) : unselectDish(id)
+  }
     return(
       <Card className='recipe'>
         <CardActionArea>
@@ -34,8 +41,8 @@ const Recipe = ({id, name, selectDish, mealPlan, dish}) => {
           </CardContent>
         </CardActionArea>
         <CardActions >
-            <IconButton aria-label="add to favorites" onClick={() => selectDish(dish)}>
-                <FavoriteIcon />
+            <IconButton aria-label="add to favorites" onClick={() => handleClick(dish)} >
+                <FavoriteIcon style={{fill: heart ? 'red' : null }}/>
             </IconButton>
         </CardActions>
       </Card>
