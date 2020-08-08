@@ -14,13 +14,13 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
-const Recipe = ({id, name, selectDish, mealPlan, dish}) => {
+const Recipe = ({id, name, selectDish, unselectDish, mealPlan, dish}) => {
   const [heart, setHeart] = useState(false)
+
   const handleClick = () => {
     setHeart(!heart)
-    console.log("Heart is now", heart)
-    console.log(id)
-    heart ? selectDish(dish) : unselectDish(id)
+    /* heart ? console.log("Unheart dish"): console.log("Heart dish") */
+    heart ? unselectDish(id) : selectDish(dish)
   }
     return(
       <Card className='recipe'>
@@ -29,7 +29,7 @@ const Recipe = ({id, name, selectDish, mealPlan, dish}) => {
             height="140"
             component="img"
             image={image}
-            title="Contemplative Reptile"
+            title="Fooood"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
@@ -41,7 +41,7 @@ const Recipe = ({id, name, selectDish, mealPlan, dish}) => {
           </CardContent>
         </CardActionArea>
         <CardActions >
-            <IconButton aria-label="add to favorites" onClick={() => handleClick(dish)} >
+            <IconButton aria-label="add to favorites" onClick={handleClick} >
                 <FavoriteIcon style={{fill: heart ? 'red' : null }}/>
             </IconButton>
         </CardActions>
@@ -53,6 +53,6 @@ const mapStateToProps = state => {
   return {mealPlan: state.MealPlan}
 }
 
-const mapDispatchToProps = {selectDish}
+const mapDispatchToProps = {selectDish, unselectDish}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipe)
