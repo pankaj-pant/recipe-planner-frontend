@@ -1,21 +1,35 @@
 import * as actions from './actionTypes'
 
-export const createRecipe = (dish) => ({
+export const createRecipe = (recipe) => ({
     type: actions.CREATE_RECIPE,
     payload:  {
-        dish: dish
+        recipe: recipe
     }
 })
 
-export const selectDish = (dish) => ({
-    type: actions.SELECT_DISH,
+export const toggleHeartRecipe = (id) => ({
+    type: actions.TOGGLE_HEART_RECIPE,
     payload: {
-        dish: dish
+        id: id
     }
 })
 
-export const unselectDish = (id) => ({
-    type: actions.UNSELECT_DISH,
+export const unheartRecipe = (id) => ({
+    type: actions.UNHEART_RECIPE,
+    payload: {
+        id: id
+    }
+})
+
+export const selectRecipe = (recipe) => ({
+    type: actions.SELECT_RECIPE,
+    payload: {
+        recipe: recipe
+    }
+})
+
+export const unselectRecipe = (id) => ({
+    type: actions.UNSELECT_RECIPE,
     payload: {
         id: id
     }

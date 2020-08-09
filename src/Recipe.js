@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux'
-import {selectDish, unselectDish} from './redux/actionCreators'
+import {selectRecipe, unselectRecipe, toggleHeartRecipe} from './redux/actionCreators'
 import './Recipe.css'
 
 import image from './images/burgers.jpg'
@@ -14,13 +14,14 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
-const Recipe = ({id, name, selectDish, unselectDish, mealPlan, dish}) => {
+const Recipe = ({id, name, selectRecipe, unselectRecipe, toggleHeartRecipe, mealPlan, recipe}) => {
   const [heart, setHeart] = useState(false)
 
   const handleClick = () => {
-    setHeart(!heart)
+    //setHeart(!heart)
+    toggleHeartRecipe(id)
     /* heart ? console.log("Unheart dish"): console.log("Heart dish") */
-    heart ? unselectDish(id) : selectDish(dish)
+    recipe.liked ? unselectRecipe(id) : selectRecipe(recipe)
   }
     return(
       <Card className='recipe'>
@@ -42,7 +43,7 @@ const Recipe = ({id, name, selectDish, unselectDish, mealPlan, dish}) => {
         </CardActionArea>
         <CardActions >
             <IconButton aria-label="add to favorites" onClick={handleClick} >
-                <FavoriteIcon style={{fill: heart ? 'red' : null }}/>
+                <FavoriteIcon style={{fill: recipe.liked ? 'red' : null }}/>
             </IconButton>
         </CardActions>
       </Card>
@@ -53,6 +54,6 @@ const mapStateToProps = state => {
   return {mealPlan: state.MealPlan}
 }
 
-const mapDispatchToProps = {selectDish, unselectDish}
+const mapDispatchToProps = {selectRecipe, unselectRecipe, toggleHeartRecipe}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipe)

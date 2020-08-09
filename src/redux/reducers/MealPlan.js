@@ -2,10 +2,9 @@ import * as actions from '../actionTypes'
 
 const MealPlan = (state = [], action) => {
     switch (action.type) {
-        case actions.SELECT_DISH:
-            console.log("Select dish")
-            return [...state, action.payload.dish]
-        case actions.UNSELECT_DISH:
+        case actions.SELECT_RECIPE:
+            return [...state, action.payload.recipe]
+        case actions.UNSELECT_RECIPE:
             return state.filter(dish => dish.id !== action.payload.id)
         default:
             return state

@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
-import Dish from './Dish'
+import Recipes from './Recipes'
 import Ingredients from './Ingredients'
 import MealPlan from './MealPlan'
 
-const rootReducer = combineReducers({Dish, Ingredients, MealPlan})
+const rootReducer = combineReducers({Recipes, Ingredients, MealPlan})
 
 export default rootReducer

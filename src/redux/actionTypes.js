@@ -1,11 +1,17 @@
 //ADD A NEW RECIPE
 export const CREATE_RECIPE = "createRecipe"
 
-//HEART A RECIPE
-export const SELECT_DISH = "selectDish"
+//TOGGLE HEART A RECIPE
+export const TOGGLE_HEART_RECIPE = "toggleHeartRecipe"
 
 //UNHEART A RECIPE
-export const UNSELECT_DISH = "unselectDish"
+export const UNHEART_RECIPE = "unheartRecipe"
+
+//ADD RECIPE TO MEALPLAN
+export const SELECT_RECIPE = "selectRecipe"
+
+//REMOVE RECIPE FROM MEALPLAN
+export const UNSELECT_RECIPE = "unselectRecipe"
 
 
 

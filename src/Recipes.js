@@ -3,7 +3,7 @@ import Recipe from './Recipe'
 import {connect} from 'react-redux'
 import './Recipes.css'
 
-const Recipes = ({dish}) => {
+const Recipes = ({recipes}) => {
     const [items, setItems] = useState([])
     const addToList = (ingredients) => {
         console.log("Add Ingredients to Shopping List button clicked")
@@ -13,13 +13,13 @@ const Recipes = ({dish}) => {
         
     }
 
-    console.log("Recipes State", dish)
+    console.log("Recipes State", recipes)
     return(
         <div>
             <h2>List of all Recipes</h2>
             <button>Add New Recipe</button>
             <div className="recipes">
-                {dish.map(recipe => <Recipe key={recipe.id} name={recipe.dish} id={recipe.id} dish={recipe}/>)}
+                {recipes.map(recipe => <Recipe key={recipe.id} name={recipe.dish} id={recipe.id} recipe={recipe}/>)}
             </div>
             
         </div>
@@ -27,7 +27,7 @@ const Recipes = ({dish}) => {
 }
 
 const mapStateToProps = state => {
-    return {dish: state.Dish}
+    return {recipes: state.Recipes}
 }
 
 export default connect(mapStateToProps)(Recipes)
