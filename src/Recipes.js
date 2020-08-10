@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Recipe from './Recipe'
 import {connect} from 'react-redux'
 import './Recipes.css'
+import {createRecipe} from './redux/actionCreators'
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -11,10 +12,10 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-const Recipes = ({recipes}) => {
-    const [items, setItems] = useState([])
+const Recipes = ({recipes, createRecipe}) => {
     const [open, setOpen] = useState(false);
     const [extraIngredients, setExtraIngredients] = useState(['input-0', 'input-1'])
+    const [recipe, setRecipe] = useState({"dish": "", "ingredients": ["", ""]})
 
     const handleClickOpen = () => {
       setOpen(true);
@@ -22,7 +23,25 @@ const Recipes = ({recipes}) => {
   
     const handleClose = () => {
       setOpen(false);
+      setExtraIngredients(['input-0', 'input-1'])
+      setRecipe({"dish": "", "ingredients": ["", ""]})
     };
+
+    const handleSave = () => {
+        setOpen(false);
+
+        //createRecipe()
+    }
+
+    const handleRecipeDish = (event) => {
+        setRecipe({...recipe, "dish": event.target.value})
+    }
+
+    const handleRecipeIngredients = (index, event) => {
+        let values = [...recipe.ingredients]
+        values[index] = event.target.value
+        setRecipe({...recipe, "ingredients": values})
+    }
 
     const addMoreIngredients = () => {
         let newIngredient = `input-${extraIngredients.length}`
@@ -30,13 +49,6 @@ const Recipes = ({recipes}) => {
     }
 
 
-    const addToList = (ingredients) => {
-        console.log("Add Ingredients to Shopping List button clicked")
-        console.log(ingredients)
-        const updatedItems = items.concat(ingredients)
-        setItems(updatedItems)
-        
-    }
 
     console.log("Recipes State", recipes)
     return(
@@ -57,8 +69,10 @@ const Recipes = ({recipes}) => {
                     label="Dish name"
                     type="string"
                     fullWidth
+                    value={recipe.dish}
+                    onChange={handleRecipeDish}
                 />
-                {extraIngredients.map(ingredient => 
+                 {extraIngredients.map((ingredient, index) => 
                     <TextField
                     margin="dense"
                     key={ingredient}
@@ -66,6 +80,8 @@ const Recipes = ({recipes}) => {
                     label="Ingredients"
                     type="string"
                     fullWidth
+                    value={recipe.ingredients[index] || ''}
+                    onChange={(event) => handleRecipeIngredients(index, event)}
                 />)}
                 </DialogContent>
                 <DialogActions>
@@ -75,7 +91,7 @@ const Recipes = ({recipes}) => {
                 <Button onClick={handleClose} color="primary">
                     Cancel
                 </Button>
-                <Button onClick={handleClose} color="primary">
+                <Button onClick={handleSave} color="primary">
                     Save
                 </Button>
                 </DialogActions>
@@ -92,4 +108,6 @@ const mapStateToProps = state => {
     return {recipes: state.Recipes}
 }
 
-export default connect(mapStateToProps)(Recipes)
+const mapDispatchToProps = {createRecipe}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recipes)
