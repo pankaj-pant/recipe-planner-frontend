@@ -4,9 +4,6 @@ export const CREATE_RECIPE = "createRecipe"
 //TOGGLE HEART A RECIPE
 export const TOGGLE_HEART_RECIPE = "toggleHeartRecipe"
 
-//UNHEART A RECIPE
-export const UNHEART_RECIPE = "unheartRecipe"
-
 //ADD RECIPE TO MEALPLAN
 export const SELECT_RECIPE = "selectRecipe"
 
