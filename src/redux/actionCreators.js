@@ -14,21 +14,6 @@ export const toggleHeartRecipe = (id) => ({
     }
 })
 
-
-export const selectRecipe = (recipe) => ({
-    type: actions.SELECT_RECIPE,
-    payload: {
-        recipe: recipe
-    }
-})
-
-export const unselectRecipe = (id) => ({
-    type: actions.UNSELECT_RECIPE,
-    payload: {
-        id: id
-    }
-})
-
 export const addIngredient = (ingredients) => ({
     type: actions.ADD_INGREDIENT,
     payload: {

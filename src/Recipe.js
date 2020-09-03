@@ -14,12 +14,10 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
-const Recipe = ({id, name, selectRecipe, unselectRecipe, toggleHeartRecipe, mealPlan, recipe}) => {
-  const [heart, setHeart] = useState(false)
+const Recipe = ({id, name, toggleHeartRecipe, recipe}) => {
 
   const handleClick = () => {
     toggleHeartRecipe(id)
-    //recipe.liked ? unselectRecipe(id) : selectRecipe(recipe)
   }
 
     return(
@@ -49,10 +47,6 @@ const Recipe = ({id, name, selectRecipe, unselectRecipe, toggleHeartRecipe, meal
     )
 }
 
-const mapStateToProps = state => {
-  return {mealPlan: state.MealPlan}
-}
+const mapDispatchToProps = {toggleHeartRecipe}
 
-const mapDispatchToProps = {selectRecipe, unselectRecipe, toggleHeartRecipe}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Recipe)
+export default connect(null, mapDispatchToProps)(Recipe)
