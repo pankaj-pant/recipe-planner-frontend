@@ -42,3 +42,10 @@ export const deleteIngredient = (id) => ({
         id: id
     }
 })
+
+export const generateShoppingList = (mealPlan) => ({
+    type: actions.GENERATE_SHOPPING_LIST,
+    payload: {
+        mealPlan: mealPlan
+    }
+})

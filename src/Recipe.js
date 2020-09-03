@@ -18,11 +18,10 @@ const Recipe = ({id, name, selectRecipe, unselectRecipe, toggleHeartRecipe, meal
   const [heart, setHeart] = useState(false)
 
   const handleClick = () => {
-    //setHeart(!heart)
     toggleHeartRecipe(id)
-    /* heart ? console.log("Unheart dish"): console.log("Heart dish") */
-    recipe.liked ? unselectRecipe(id) : selectRecipe(recipe)
+    //recipe.liked ? unselectRecipe(id) : selectRecipe(recipe)
   }
+
     return(
       <Card className='recipe'>
         <CardActionArea>
