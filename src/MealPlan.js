@@ -1,10 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux'
+import {generateShoppingList} from './redux/actionCreators'
 
-const MealPlan = ({recipes}) => {
+const MealPlan = ({recipes, generateShoppingList}) => {
+
     const mealPlan = recipes.filter(item => item.liked === true)
+    console.log("Mealplan", mealPlan)
     const handleClick = () => {
         console.log("Generate shopping list clicked")
+        generateShoppingList(mealPlan)
     }
     return(
         <div>
@@ -17,10 +21,11 @@ const MealPlan = ({recipes}) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         recipes: state.Recipes
     }
 }
 
-export default connect(mapStateToProps)(MealPlan)
+const mapDispatchToProps = {generateShoppingList}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MealPlan)

@@ -6,6 +6,10 @@ const Ingredients = (state = [], action) => {
             return [...state, ...action.payload.ingredients]
         case actions.REMOVE_INGREDIENT:
             return state.filter(item => item.id !== action.payload.id)
+        case actions.GENERATE_SHOPPING_LIST:
+            let ingredients = action.payload.mealPlan.map(dish => dish.ingredients)
+            ingredients = ingredients.flat()
+            return [...state, ...ingredients]
         default:
             return state
     }

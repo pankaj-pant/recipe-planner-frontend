@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux'
-import {selectRecipe, unselectRecipe, toggleHeartRecipe} from './redux/actionCreators'
+import {toggleHeartRecipe} from './redux/actionCreators'
 import './Recipe.css'
 
 import image from './images/burgers.jpg'
