@@ -11,11 +11,12 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { v4 as uuidv4 } from 'uuid';
 
 const Recipes = ({recipes, createRecipe}) => {
     const [open, setOpen] = useState(false);
     const [extraIngredients, setExtraIngredients] = useState(['input-0', 'input-1'])
-    const [recipe, setRecipe] = useState({"dish": "", "ingredients": ["", ""]})
+    const [recipe, setRecipe] = useState({"id": uuidv4(), "dish": "", "ingredients": ["", ""]})
 
     const handleClickOpen = () => {
       setOpen(true);
@@ -28,9 +29,9 @@ const Recipes = ({recipes, createRecipe}) => {
     };
 
     const handleSave = () => {
-        setOpen(false);
-
-        //createRecipe()
+        console.log(recipe)
+        createRecipe(recipe)
+        handleClose()
     }
 
     const handleRecipeDish = (event) => {
@@ -50,7 +51,7 @@ const Recipes = ({recipes, createRecipe}) => {
 
 
 
-    console.log("Recipes State", recipes)
+    //console.log("Recipes State", recipes)
     return(
         <div>
             <h2>List of all Recipes</h2>
