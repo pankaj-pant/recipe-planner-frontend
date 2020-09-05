@@ -9,7 +9,7 @@ const Ingredients = (state = [], action) => {
         case actions.GENERATE_SHOPPING_LIST:
             let ingredients = action.payload.mealPlan.map(dish => dish.ingredients)
             ingredients = ingredients.flat()
-            return [...state, ...ingredients]
+            return [...ingredients]
         default:
             return state
     }
