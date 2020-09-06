@@ -1,9 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Counter from './Counter'
 import {connect} from 'react-redux'
-import {deleteIngredient} from './redux/actionCreators'
+import {deleteIngredient, addIngredient} from './redux/actionCreators'
+import { v4 as uuidv4 } from 'uuid';
 
-const ShoppingList = ({ingredients, deleteIngredient}) => {
+const ShoppingList = ({ingredients, deleteIngredient, addIngredient}) => {
+    const [extraIngredient, setExtraIngredient] = useState({"id": uuidv4(), "item": ""})
+
+    const handleChange = (event) => {
+        setExtraIngredient({...extraIngredient, "item": event.target.value})
+    }
+
+    const handleClick = () => {
+        addIngredient(extraIngredient)
+        setExtraIngredient({"id": uuidv4(), "item": ""})
+    }
 
     return (
         <div style={{border: "1px solid black"}}>
@@ -24,6 +35,9 @@ const ShoppingList = ({ingredients, deleteIngredient}) => {
                         </p>
                     </div>)
                 })}
+                <p>Something else to add?</p>
+                <input type="text" value={extraIngredient.item} onChange={handleChange}></input>
+                <button onClick={handleClick}>add</button>
             </div>)}
         </div>
     )
@@ -34,7 +48,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    deleteIngredient
+    deleteIngredient, addIngredient
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList)

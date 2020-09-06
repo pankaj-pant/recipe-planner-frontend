@@ -14,10 +14,10 @@ export const toggleHeartRecipe = (id) => ({
     }
 })
 
-export const addIngredient = (ingredients) => ({
+export const addIngredient = (ingredient) => ({
     type: actions.ADD_INGREDIENT,
     payload: {
-        ingredients: ingredients
+        ingredient: ingredient
     }
 })
 
